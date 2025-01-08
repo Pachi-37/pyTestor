@@ -5,6 +5,20 @@ import pytest
 from constant.MysqlSetting import MysqlSetting
 
 
+def setup_module():
+    print("setup_module")
+
+def teardown_module():
+    print("teardown_module")
+
+def setup_function():
+    print("setup_function")
+
+def teardown_function():
+    print("teardown_function")
+
+# python 3.6 使用 setup() teardown()，新版方法里面优先级下降
+
 @pytest.mark.trylast
 def test_demo():
     assert 2 == 1
