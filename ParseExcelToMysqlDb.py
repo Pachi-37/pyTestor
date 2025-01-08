@@ -52,6 +52,7 @@ for index, row in df.iterrows():
     insert_or_update_sql = insert_or_update_sql_template.replace("tmp_value", ",".join("'{}'".format(item) for item in row))
     print(insert_or_update_sql)
     db_cursor.execute(insert_or_update_sql)
+mysql_connect.commit()
 
 db_cursor.execute(f"select * from {db_name}")
 for e in db_cursor.fetchall():
