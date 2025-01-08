@@ -20,6 +20,7 @@ def teardown_function():
 # python 3.6 使用 setup() teardown()，新版方法里面优先级下降
 
 @pytest.mark.trylast
+@pytest.mark.skip
 def test_demo():
     assert 2 == 1
 
@@ -44,3 +45,7 @@ result = cursor.fetchall()
 @pytest.mark.parametrize(["id", "name", "module", "url", "method", "status", "data", "style", "expect"], result)
 def test_mysql_result(id, name, module, url, method, status, data, style, expect):
     print(module)
+
+if __name__ == '__main__':
+    pytest.main(['-s', 'test_pytest.py', '--alluredir', "./allure-results/a"])
+    os.system('allure generate ./allure-results/a -o ./allure-report/a --clean')
